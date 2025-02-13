@@ -44,11 +44,11 @@ ultima_data = pd.read_sql(query_last_date, engine)['ultima_data'].iloc[0]
 ultima_data_str = pd.to_datetime(ultima_data).strftime('%Y-%m-%d')
 
 # Consulta na última data disponível
-query_mirare = f"""
+query = f"""
     SELECT DOS DADOS QUE VÃO NO RELATÓRIO
     AND CAST(DATA AS date) = '{ultima_data_str}'
 """
-df = pd.read_sql(query_mirare, engine)
+df = pd.read_sql(query, engine)
 excel_path = 'RELATORIO.xlsx'
 df.to_excel(excel_path, index=False)
 
